@@ -8,13 +8,16 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 model_id = "google/gemma-2b-it"
 
 tokenizer = AutoTokenizer.from_pretrained(model_id)
+# 次のエラーを避けるために `device_map` は使わない:
+# ImportError: Using `low_cpu_mem_usage=True` or a `device_map` requires Accelerate:
+# `pip install accelerate`
 model = AutoModelForCausalLM.from_pretrained(
     model_id,
     device_map="auto",
 )
 
 chat = [
-    {"role": "user", "content": "Write a hello world program"},
+    {"role": "user", "content": "Python で Hello World のプログラムを書いてください"},
 ]
 prompt = tokenizer.apply_chat_template(chat, tokenize=False, add_generation_prompt=True)
 
@@ -34,26 +37,18 @@ print("decoded:\n", decoded)
 
 # => 出力サンプル:
 #  <bos><start_of_turn>user
-# Write a hello world program<end_of_turn>
+# Python で Hello World のプログラムを書いてください<end_of_turn>
 # <start_of_turn>model
 # ```python
-# print("Hello, world!")
+# print("Hello World!")
 # ```
-#
-# **Explanation:**
-#
-# * `print()` is a built-in Python function that prints the given argument to the console.
-# * `"Hello, world!"` is the string that we want to print.
-# * `` is the string delimiter, which tells `print()` to print the string on a single line.
-#
-# **Output:**
-#
+
+# このコードは、Python で Hello World のプログラムを表しています。
+
+# このプログラムは、Python のコンソレーションで実行されます。コンソレーションは、Python の実行環境を自動的に構築するための機能です。
+
+# このプログラムを実行すると、次のメッセージが表示されます。
+
 # ```
-# Hello, world!
-# ```
-#
-# **Note:**
-#
-# * The `print()` function can take multiple arguments, which will be separated by commas.
-# * You can also use `print()` to print multiple lines of text by passing a list of strings as arguments.
-# * `print()` is a versatile function that can be used
+# Hello World!
+# ```<eos>
