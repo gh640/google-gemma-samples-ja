@@ -7,6 +7,8 @@ Google の Gemma モデルのサンプル集です。
 - macOS Sonoma (14)
 - Python 3.12
 - Poetry 1.x
+- Hugging Face アカウント
+- Gemma モデルの利用規約に同意済み
 
 ## 確認時の環境
 
@@ -18,6 +20,28 @@ sw_vers
 ProductName:		macOS
 ProductVersion:		14.3.1
 BuildVersion:		23D60
+```
+
+## 使い方
+
+Python 3.12 と Poetry 1.x はインストール済みのものとします。
+
+Poetry で必要な PyPI パッケージをインストールします。
+
+```bash
+poetry install --no-root
+```
+
+Hugging Face のトークンを取得して環境変数 `HF_TOKEN` にセットします。
+
+```bash
+export HF_TOKEN='...'
+```
+
+Poetry の venv 内でサンプルを実行します。
+
+```bash
+poetry run python samples/01/gemma-b2.py
 ```
 
 ## リンク
