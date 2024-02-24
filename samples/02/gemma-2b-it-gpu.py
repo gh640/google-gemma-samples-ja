@@ -5,9 +5,11 @@ See: https://huggingface.co/google/gemma-2b-it
 
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-tokenizer = AutoTokenizer.from_pretrained("google/gemma-2b-it")
+model_id = "google/gemma-2b-it"
+
+tokenizer = AutoTokenizer.from_pretrained(model_id)
 # GPU を使うために `device_map="auto"`
-model = AutoModelForCausalLM.from_pretrained("google/gemma-2b-it", device_map="auto")
+model = AutoModelForCausalLM.from_pretrained(model_id, device_map="auto")
 
 input_text = "Write me a poem about Machine Learning."
 # GPU を使うために `to("mps")`
