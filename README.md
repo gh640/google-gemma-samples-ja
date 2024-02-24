@@ -33,6 +33,7 @@ poetry install --no-root
 ```
 
 Hugging Face のトークンを取得して環境変数 `HF_TOKEN` にセットします。
+トークンの取得がまだの場合は Hugging Face の [Access Tokens ページ](https://huggingface.co/settings/tokens) で生成・取得します。
 
 ```bash
 export HF_TOKEN='...'
