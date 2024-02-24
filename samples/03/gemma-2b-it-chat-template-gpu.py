@@ -1,18 +1,16 @@
-"""A sample to use Gemma 2B it with a chat template.
+"""A sample to use Gemma 2B it and a chat template with GPU.
 
 See: https://huggingface.co/google/gemma-2b-it
 """
 
-import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 model_id = "google/gemma-2b-it"
-dtype = torch.bfloat16
 
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 model = AutoModelForCausalLM.from_pretrained(
     model_id,
-    torch_dtype=dtype,
+    device_map="auto",
 )
 
 chat = [
@@ -24,7 +22,9 @@ print(f"{prompt=}")
 # =>
 # prompt='<bos><start_of_turn>user\nWrite a hello world program<end_of_turn>\n<start_of_turn>model\n'
 
-inputs = tokenizer.encode(prompt, add_special_tokens=False, return_tensors="pt")
+inputs = tokenizer.encode(prompt, add_special_tokens=False, return_tensors="pt").to(
+    "mps"
+)
 outputs = model.generate(input_ids=inputs.to(model.device), max_new_tokens=150)
 
 decoded = tokenizer.decode(outputs[0])

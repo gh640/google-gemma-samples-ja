@@ -1,9 +1,9 @@
-"""A sample to use Gemma 2B it.
+"""A sample to use Gemma 2B it with a chat template.
 
 See: https://huggingface.co/google/gemma-2b-it
 """
+
 import torch
-import transformers
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 model_id = "google/gemma-2b-it"
@@ -11,7 +11,7 @@ dtype = torch.bfloat16
 
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 # 次のエラーを避けるために `device_map` は使わない:
-# ImportError: Using `low_cpu_mem_usage=True` or a `device_map` requires Accelerate: 
+# ImportError: Using `low_cpu_mem_usage=True` or a `device_map` requires Accelerate:
 # `pip install accelerate`
 model = AutoModelForCausalLM.from_pretrained(
     model_id,
@@ -19,7 +19,7 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 
 chat = [
-    { "role": "user", "content": "Python で Hello World のプログラムを書いてください" },
+    {"role": "user", "content": "Python で Hello World のプログラムを書いてください"},
 ]
 prompt = tokenizer.apply_chat_template(chat, tokenize=False, add_generation_prompt=True)
 
@@ -50,4 +50,3 @@ print("decoded:\n", decoded)
 # ```
 # Hello World!
 # ```<eos>
-
