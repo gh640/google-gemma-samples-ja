@@ -2,10 +2,13 @@
 
 See: https://huggingface.co/google/gemma-2b
 """
+
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-tokenizer = AutoTokenizer.from_pretrained("google/gemma-2b")
-model = AutoModelForCausalLM.from_pretrained("google/gemma-2b")
+model_id = "google/gemma-2b"
+
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+model = AutoModelForCausalLM.from_pretrained(model_id)
 
 input_text = "昔々あるところに"
 input_ids = tokenizer(input_text, return_tensors="pt")
