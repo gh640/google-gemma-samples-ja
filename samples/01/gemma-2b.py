@@ -10,5 +10,5 @@ model = AutoModelForCausalLM.from_pretrained("google/gemma-2b")
 input_text = "Write me a poem about Machine Learning."
 input_ids = tokenizer(input_text, return_tensors="pt")
 
-outputs = model.generate(**input_ids)
+outputs = model.generate(max_length=30, **input_ids)
 print(tokenizer.decode(outputs[0]))
