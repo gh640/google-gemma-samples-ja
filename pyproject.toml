@@ -1,9 +1,6 @@
 [tool.poetry]
 name = "google-gemma-samples-ja"
-version = "0.1.0"
 description = "Google の Gemma モデルのサンプル集"
-authors = ["Goto Hayato <gh640@hey.com>"]
-readme = "README.md"
 
 # `package-mode` requires Poetry >= 1.8.0.
 package-mode = false

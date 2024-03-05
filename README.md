@@ -29,7 +29,7 @@ Python 3.12 と Poetry 1.x はインストール済みのものとします。
 Poetry で必要な PyPI パッケージをインストールします。
 
 ```bash
-poetry install --no-root
+poetry install
 ```
 
 Hugging Face のトークンを取得して環境変数 `HF_TOKEN` にセットします。
