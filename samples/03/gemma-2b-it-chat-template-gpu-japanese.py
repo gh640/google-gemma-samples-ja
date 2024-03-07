@@ -29,7 +29,7 @@ inputs = tokenizer.encode(
     prompt,
     add_special_tokens=False,
     return_tensors="pt",
-).to("mps")
+).to(model.device)
 outputs = model.generate(input_ids=inputs.to(model.device), max_new_tokens=150)
 
 decoded = tokenizer.decode(outputs[0])

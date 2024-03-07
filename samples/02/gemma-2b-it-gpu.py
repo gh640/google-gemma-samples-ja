@@ -12,8 +12,8 @@ tokenizer = AutoTokenizer.from_pretrained(model_id)
 model = AutoModelForCausalLM.from_pretrained(model_id, device_map="auto")
 
 input_text = "Write me a poem about Machine Learning."
-# GPU を使うために `to("mps")`
-input_ids = tokenizer(input_text, return_tensors="pt").to("mps")
+# GPU を使うために `to(model.device)`
+input_ids = tokenizer(input_text, return_tensors="pt").to(model.device)
 
 # 推奨されている `max_length` を明示的にセットする
 outputs = model.generate(max_length=30, **input_ids)
