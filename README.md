@@ -6,7 +6,7 @@ Google の Gemma モデルのサンプル集です。
 
 - macOS Sonoma (14)
 - Python 3.12
-- Poetry `>=1.8.0`
+- uv `>=0.5.0,<1.0.0`
 - Hugging Face アカウント
 - Gemma モデルの利用規約に同意済み
 

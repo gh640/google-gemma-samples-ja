@@ -1,18 +1,11 @@
-[tool.poetry]
+[project]
 name = "google-gemma-samples-ja"
-description = "Google の Gemma モデルのサンプル集"
-
-# `package-mode` requires Poetry >= 1.8.0.
-package-mode = false
-
-
-[tool.poetry.dependencies]
-python = "^3.12"
-transformers = "^4.38.1"
-torch = "^2.2.1"
-accelerate = "^0.30.0"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "accelerate>=1.3.0",
+    "torch>=2.6.0",
+    "transformers>=4.48.3",
+]
